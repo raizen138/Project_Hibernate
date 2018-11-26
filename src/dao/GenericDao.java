@@ -13,7 +13,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
-import conrelaciones.Profesor;
 
 public class GenericDao<T, ID extends Serializable> implements IGenericDao<T, ID> {
 
