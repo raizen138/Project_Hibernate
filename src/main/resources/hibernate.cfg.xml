@@ -24,8 +24,7 @@
 <!-- Aqui van las clases que mapees. TODAS -->
 		<mapping class="tastat.Client" />
 		<mapping class="tastat.Comanda" />
-		<mapping class="tastat.Magatzem" />
-		<mapping class="tastat.LotDesglossat" />
+		<mapping class="tastat.Lot" />
 		<mapping class="tastat.Producte" />
 		<mapping class="tastat.Proveidor" />
 		<mapping class="tastat.Address" />
