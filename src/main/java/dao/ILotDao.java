@@ -2,15 +2,16 @@ package main.java.dao;
 
 import java.util.List;
 
-import main.java.tastat.LotDesglossat;
+import main.java.tastat.Lot;
 
-public interface ILotDao extends IGenericDao<LotDesglossat,Integer>{
 
-	void saveOrUpdate(LotDesglossat p);
+public interface ILotDao extends IGenericDao<Lot,Integer>{
 
-	LotDesglossat get(Integer id);
+	void saveOrUpdate(Lot p);
 
-	List<LotDesglossat> list();
+	Lot get(Integer id);
+
+	List<Lot> list();
 
 	void delete(Integer id);
 	

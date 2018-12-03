@@ -1,7 +1,7 @@
 package main.java.dao;
 
-import main.java.tastat.LotDesglossat;
+import main.java.tastat.Lot;
 
-public class LotDao extends GenericDao<LotDesglossat,Integer> implements ILotDao{
+public class LotDao extends GenericDao<Lot,Integer> implements ILotDao{
 
 }
