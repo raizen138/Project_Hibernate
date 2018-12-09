@@ -2,7 +2,9 @@ package main.java.dao;
 
 import java.util.List;
 
+import main.java.tastat.Address;
 import main.java.tastat.Client;
+import main.java.tastat.Comanda;
 
 
 public interface IClientDao extends IGenericDao<Client,Integer>{
@@ -15,6 +17,9 @@ public interface IClientDao extends IGenericDao<Client,Integer>{
 
 	void delete(Integer id);
 	
+	boolean setComanda(Client c, Comanda co);
+	
+	boolean setAddress(Client c, Address a);
 	
 	
 }
