@@ -1,33 +1,33 @@
 package main.java.dao;
 
-import java.util.List;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 
 import main.java.tastat.Lot;
+import main.java.tastat.Producte;
 
 public class LotDao extends GenericDao<Lot,Integer> implements ILotDao{
 
 	@Override
-	public void saveOrUpdate(Lot entity) {
-		// TODO Auto-generated method stub
-		super.saveOrUpdate(entity);
-	}
-
-	@Override
-	public Lot get(Integer id) {
-		// TODO Auto-generated method stub
-		return super.get(id);
-	}
-
-	@Override
-	public void delete(Integer id) {
-		// TODO Auto-generated method stub
-		super.delete(id);
-	}
-
-	@Override
-	public List<Lot> list() {
-		// TODO Auto-generated method stub
-		return super.list();
+	public boolean setProducte(Lot l, Producte p) {
+		Session session = sessionFactory.getCurrentSession();
+		l.setProducte(p);
+		p.getLotes().add(l);
+		try {
+			session.beginTransaction();
+			session.saveOrUpdate(p);
+			session.saveOrUpdate(l);
+			session.getTransaction().commit();
+			return true;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			if (session != null && session.getTransaction() != null) {
+				System.out.println("\n.......Transaction Is Being Rolled Back.......");
+				session.getTransaction().rollback();
+			}
+			return false;
+		}
 	}
 
 }

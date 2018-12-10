@@ -4,16 +4,16 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 import main.java.tastat.Address;
-import main.java.tastat.PeticioProveidor;
+import main.java.tastat.Client;
 import main.java.tastat.Proveidor;
 
-public class ProveidorDao extends GenericDao<Proveidor,Integer> implements IProveidorDao{
+public class AddressDao extends GenericDao<Address, Integer> implements IAddressDao{
 
 	@Override
-	public boolean setAddress(Proveidor p, Address a) {
+	public boolean setProveidor(Address a, Proveidor p) {
 		Session session = sessionFactory.getCurrentSession();
-		p.setAddress(a);
 		a.setProveidor(p);
+		p.setAddress(a);
 		try {
 			session.beginTransaction();
 			session.saveOrUpdate(a);
@@ -31,14 +31,14 @@ public class ProveidorDao extends GenericDao<Proveidor,Integer> implements IProv
 	}
 
 	@Override
-	public boolean setPeticio(Proveidor p, PeticioProveidor pp) {
+	public boolean setClient(Address a, Client c) {
 		Session session = sessionFactory.getCurrentSession();
-		p.getPeticionsProvedor().add(pp);
-		pp.setProveidor(p);
+		a.setClient(c);
+		c.setAdreca(a);
 		try {
 			session.beginTransaction();
-			session.saveOrUpdate(pp);
-			session.saveOrUpdate(p);
+			session.saveOrUpdate(a);
+			session.saveOrUpdate(c);
 			session.getTransaction().commit();
 			return true;
 		} catch (HibernateException e) {

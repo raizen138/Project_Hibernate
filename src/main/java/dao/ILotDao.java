@@ -3,6 +3,7 @@ package main.java.dao;
 import java.util.List;
 
 import main.java.tastat.Lot;
+import main.java.tastat.Producte;
 
 
 public interface ILotDao extends IGenericDao<Lot,Integer>{
@@ -14,6 +15,8 @@ public interface ILotDao extends IGenericDao<Lot,Integer>{
 	List<Lot> list();
 
 	void delete(Integer id);
+	
+	boolean setProducte(Lot l, Producte p);
 	
 	
 }

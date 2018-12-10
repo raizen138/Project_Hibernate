@@ -3,20 +3,20 @@ package main.java.dao;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
-import main.java.tastat.Address;
-import main.java.tastat.PeticioProveidor;
-import main.java.tastat.Proveidor;
+import main.java.tastat.Client;
+import main.java.tastat.Comanda;
+import main.java.tastat.Producte;
 
-public class ProveidorDao extends GenericDao<Proveidor,Integer> implements IProveidorDao{
+public class ComandaDao extends GenericDao<Comanda, Integer> implements IComandaDao{
 
 	@Override
-	public boolean setAddress(Proveidor p, Address a) {
+	public boolean setProducte(Comanda c, Producte p) {
 		Session session = sessionFactory.getCurrentSession();
-		p.setAddress(a);
-		a.setProveidor(p);
+		c.getComandes().add(p);
+		p.getProducteComanda().add(p);
 		try {
 			session.beginTransaction();
-			session.saveOrUpdate(a);
+			session.saveOrUpdate(c);
 			session.saveOrUpdate(p);
 			session.getTransaction().commit();
 			return true;
@@ -31,14 +31,14 @@ public class ProveidorDao extends GenericDao<Proveidor,Integer> implements IProv
 	}
 
 	@Override
-	public boolean setPeticio(Proveidor p, PeticioProveidor pp) {
+	public boolean setClient(Comanda c, Client cl) {
 		Session session = sessionFactory.getCurrentSession();
-		p.getPeticionsProvedor().add(pp);
-		pp.setProveidor(p);
+		c.setComprador(cl);
+		cl.getComandes().add(c);
 		try {
 			session.beginTransaction();
-			session.saveOrUpdate(pp);
-			session.saveOrUpdate(p);
+			session.saveOrUpdate(c);
+			session.saveOrUpdate(cl);
 			session.getTransaction().commit();
 			return true;
 		} catch (HibernateException e) {
@@ -51,4 +51,5 @@ public class ProveidorDao extends GenericDao<Proveidor,Integer> implements IProv
 		}
 	}
 
+	
 }
