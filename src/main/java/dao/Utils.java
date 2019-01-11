@@ -33,11 +33,11 @@ public class Utils {
 	        Metadata metadata = sources.getMetadataBuilder().build();
 	        
 	        ///comentar o descomentar la linea del interceptor
-	        /*
+	        
 	        sessionFactory = metadata.getSessionFactoryBuilder()
 	        		.applyInterceptor(new LoggingInterceptor())
 	        		.build();
-	        */
+	        
 	                
 	    }
 	    return sessionFactory;

@@ -9,6 +9,7 @@ import main.java.tastat.Producte;
 
 public class LotDao extends GenericDao<Lot,Integer> implements ILotDao{
 
+	
 	@Override
 	public boolean setProducte(Lot l, Producte p) {
 		Session session = sessionFactory.getCurrentSession();

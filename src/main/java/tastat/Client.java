@@ -26,11 +26,11 @@ public class Client implements Serializable{
 	@Column(name = "actiu",updatable = true)
 	protected boolean actiu;
 
-	//relacio 1 a n amb comanda
-	@OneToMany(mappedBy="Comanda")
+	/*/relacio 1 a n amb comanda*/
+	@OneToMany(mappedBy="comprador")
 	Set<Comanda> comandes = new HashSet<>();
 
-	//relacio 1 a 1 amb adreça
+	/*/relacio 1 a 1 amb adreça*/
 	@JoinColumn(name="Adreca", nullable=false)
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private Address adreca;

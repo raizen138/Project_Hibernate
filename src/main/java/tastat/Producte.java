@@ -17,6 +17,11 @@ import javax.persistence.*;
 @Table(name = "Producte")
 public class Producte implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6706313816061182099L;
+
 	@Id()
 	@Column(name = "codiProducte")
 	protected int codiProducte;
@@ -40,20 +45,20 @@ public class Producte implements Serializable{
 	@Column(name = "preuVenda")
 	protected double preuVenda;
 	
-	//relacio 1 a n amb lot
-	@OneToMany(mappedBy="Lot")
+	/*/relacio 1 a n amb lot*/
+	@OneToMany(mappedBy="producte")
 	private Set<Lot> lotes = new HashSet<>();
 	
-	//relacio n a n amb ell mateix
-	@JoinTable(name="ProducteProducte", joinColumns={@JoinColumn(name="id_producte")}, inverseJoinColumns={@JoinColumn(name="id_producte")})
+	/*/relacio n a n amb ell mateix*/
+	@JoinTable(name="composicio", joinColumns={@JoinColumn(name="codiProducte")})
 	@ManyToMany(cascade=CascadeType.REFRESH)
 	private Set<Producte> composicio = new HashSet<>();
 
-	//relacio 1 a n amb peticionsproveidor
-	@OneToMany(mappedBy="PeticioProveidor")
+	/*/relacio 1 a n amb peticionsproveidor*/
+	@OneToMany(mappedBy="proveidor")
 	private Set<PeticioProveidor> peticioProveidor = new HashSet<>();
 
-	//relacio n a n amb comanda
+	/*/relacio n a n amb comanda*/
 	@JoinTable(name="ProducteComanda", joinColumns= {@JoinColumn(name="id_Producte")}, inverseJoinColumns= {@JoinColumn(name="id_comanda")})
 	@ManyToMany(cascade=CascadeType.REFRESH)
 	private Set<Producte> producteComanda = new HashSet<>();
@@ -171,6 +176,18 @@ public class Producte implements Serializable{
 
 	public void setProducteComanda(Set<Producte> producteComanda) {
 		this.producteComanda = producteComanda;
+	}
+
+	public Producte(int codiProducte, String nomProducte, int stock, int stockMinim, UnitatMesura unitat, Tipus tipus,
+			double preuVenda) {
+		super();
+		this.codiProducte = codiProducte;
+		this.nomProducte = nomProducte;
+		this.stock = stock;
+		this.stockMinim = stockMinim;
+		this.unitat = unitat;
+		this.tipus = tipus;
+		this.preuVenda = preuVenda;
 	}
 
 	

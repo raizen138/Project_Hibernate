@@ -27,13 +27,13 @@ public class Proveidor implements Serializable{
 	@Column(name = "personaContacte")
 	protected String personaContacte;
 	
-	//relacio 1 a 1 amb address
+	/*/relacio 1 a 1 amb address*/
 	@JoinColumn(name = "address", nullable = false)
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private Address address;
 
-	//relacio 1 a n amb peticioproveidor
-	@OneToMany(mappedBy = "PeticionsProvedor")
+	/*/relacio 1 a n amb peticioproveidor*/
+	@OneToMany(mappedBy = "proveidor")
 	Set<PeticioProveidor> peticionsProvedor = new HashSet<PeticioProveidor>();
 
 	

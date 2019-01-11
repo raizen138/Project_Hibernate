@@ -29,12 +29,12 @@ public class Comanda implements Serializable{
 	@Column(name = "estat", nullable = false)
 	protected ComandaEstat estat;	//PENDENT - PREPARAT - TRANSPORT - LLIURAT
 	
-	//relacio n a n amb producte
+	/*/relacio n a n amb producte*/
 	@JoinTable(name="ProducteComanda", joinColumns={@JoinColumn(name="id_producte")}, inverseJoinColumns={@JoinColumn(name="id_comanda")})
 	@ManyToMany(cascade=CascadeType.REFRESH)
 	private Set<Producte> comandes = new HashSet<>();
 
-	//relacio n a 1 amb client
+	/*/relacio n a 1 amb client*/
 	@JoinColumn(name="Comprador", nullable=false)
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	private Client comprador;

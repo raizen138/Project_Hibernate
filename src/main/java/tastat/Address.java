@@ -42,12 +42,12 @@ public class Address implements Serializable{
 	@Column(name = "longitud",updatable = true)
 	protected double longitud;
 	
-	//relacio 1 a 1 amb partner
+	/*/relacio 1 a 1 amb partner*/
 	@JoinColumn(name = "partner", nullable = false)
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private Proveidor proveidor;
 	
-	//relacio 1 a 1 amb client
+	/*/relacio 1 a 1 amb client*/
 	@JoinColumn(name = "client", nullable = false)
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private Client client;

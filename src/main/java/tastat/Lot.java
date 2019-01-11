@@ -26,7 +26,7 @@ public class Lot implements Serializable{
 	@Column(name = "dataCaducitat")
 	Date dataCaducitat = null;
 	
-	//relacio n a 1 amb producte
+	/*/relacio n a 1 amb producte*/
 	@ManyToOne
 	@JoinColumn(name = "producte")
 	private Producte producte;
