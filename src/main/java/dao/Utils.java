@@ -4,6 +4,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.BootstrapServiceRegistry;
+import org.hibernate.boot.registry.BootstrapServiceRegistryBuilder;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 
@@ -19,11 +21,11 @@ public class Utils {
 
 	        // exception handling omitted for brevityaa
 	    		//usar listeners
-	           /*BootstrapServiceRegistry bootstrapRegistry =
+	        BootstrapServiceRegistry bootstrapRegistry =
 	                   new BootstrapServiceRegistryBuilder()
 	                   .applyIntegrator(new EventListenerIntegrator())
 	                   .build();
-	            */
+	        
 	        serviceRegistry = new StandardServiceRegistryBuilder()
 	                .configure("hibernate.cfg.xml")
 	                .build();
